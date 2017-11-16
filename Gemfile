@@ -56,4 +56,4 @@ gem 'valid_attribute', group: [:development, :test]
 gem 'shoulda-matchers', group: [:development, :test], require: false
 gem 'teaspoon-jasmine'
 gem 'devise'
-gem 'foundation-rails', '~> 5.0'
+gem 'foundation-rails'
