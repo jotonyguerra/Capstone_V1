@@ -4,9 +4,7 @@
   <title>Diacomm1</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= stylesheet_link_tag 'application', media: 'all' %>
-
-    <%= javascript_include_tag "vendor/modernizr" %>
-
+  <%= javascript_include_tag "vendor/modernizr" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -23,6 +21,7 @@
         <%- if current_user -%>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <%- else -%>
+          <li><%= link_to "What is Diabetes", more_path %></li>
           <li><%= link_to 'Sign Up', new_user_registration_path %></li>
           <li><%= link_to 'Sign In', new_user_session_path %></li>
         <%- end -%>
@@ -34,13 +33,18 @@
     <div class="flash flash-<%= key %>">
       <%= value %>
     </div>
-
-  
   <%- end -%>
+  <!-- HERO -->
+  <section class="hero">
+    <a href="#" class="button">Submit Glucose Reading</a>
+  </section>
 
   <%= yield %>
-
+  <!-- MAIN -->
+  <section class="main"></section>
   <%= javascript_include_tag 'application' %>
+    <!-- FOOTER -->
   <%= yield :extra_footer %>
+  <footer> blah </footer>
 </body>
 </html>

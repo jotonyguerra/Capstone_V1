@@ -10,24 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171115220604) do
+ActiveRecord::Schema.define(version: 20171117235114) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "comments", force: :cascade do |t|
+    t.string "body", default: "", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "readings", force: :cascade do |t|
-    t.datetime "time", null: false
+    t.datetime "time"
     t.integer "index", null: false
     t.datetime "duration"
-    t.string "first_name", null: false
-    t.string "last_name", null: false
-    t.string "device", null: false
-    t.string "source_device_id", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "device"
+    t.string "source_device_id"
     t.string "event"
     t.string "event_subtype"
-    t.integer "glucose_value", null: false
+    t.integer "glucose_value"
     t.integer "glucose_rate_of_change"
-    t.integer "transmitter_time", null: false
+    t.integer "transmitter_time"
     t.bigint "user_id"
     t.index ["user_id"], name: "index_readings_on_user_id"
   end
@@ -52,5 +58,6 @@ ActiveRecord::Schema.define(version: 20171115220604) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "comments", "users"
   add_foreign_key "readings", "users"
 end

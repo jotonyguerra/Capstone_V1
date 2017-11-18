@@ -16,11 +16,35 @@
 
  */
 
+.wrap {
+  margin: auto;
+  max-width: 700px;
+  width: 90%;
+}
 
-/***********GENERAL************/
+.hero {
+  background-color: black;
+  padding: 20px 10px;
+  height: 90px;
+}
+.main {
+  margin: auto;
+  background-color: gray;
+}
 
-/***********NAV************/
+.footer {
+  background-color: blue;
+}
 
-/***********HERO************/
+.menu {
+  margin: auto;
+  background: #333;
+  /*li: {background: #333;
+    &:hover {background: lighten(#333, 20%);}
+  }*/
+}
 
-/***********GENERAL************/
+/*.image {
+  margin-left: 20%;
+  align-self: center;
+}*/
