@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
   root 'homes#index'
 
-  resources :home, only: [:index, :more]
+  resources :home, only: [:index, :more] do
+    resources :readings, only: [:index, :show]
+      collection {post :import}
+  end
   get 'more', to: 'homes#show'
 
   devise_for :users
@@ -11,7 +14,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:new, :create, :edit, :update, :destroy]
   end
 
-  resources :readings, only: [:index, :show]
+  # resources :readings, only: [:index, :show]
   resources :comments, only: [:index, :show]
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

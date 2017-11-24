@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag "vendor/modernizr" %>
+  <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -18,10 +19,15 @@
 
     <section class="top-bar-section">
       <ul class="right">
+
+        <li><%= link_to "What is Diabetes?", more_path %></li>
+        <li><a class="navigation" href="https://en.wikipedia.org/wiki/Diabetes_mellitus_type_1">
+            More on T1 Diabetes!</a>
+        </li>
+
         <%- if current_user -%>
           <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
         <%- else -%>
-          <li><%= link_to "What is Diabetes", more_path %></li>
           <li><%= link_to 'Sign Up', new_user_registration_path %></li>
           <li><%= link_to 'Sign In', new_user_session_path %></li>
         <%- end -%>
@@ -34,17 +40,23 @@
       <%= value %>
     </div>
   <%- end -%>
+
   <!-- HERO -->
   <section class="hero">
-    <a href="#" class="button">Submit Glucose Reading</a>
+    <p> HERO </p>
+    <%= form_tag import_home_index_path, multipart: true do %>
+      <%= file_field_tag :file %>
+      <%= submit_tag "Import Dexcom Data" %>
+    <% end %>
   </section>
-
-  <%= yield %>
   <!-- MAIN -->
-  <section class="main"></section>
+  <section class="main">
+    <%= yield :charts_js %>
+    <%= yield %>
+  </section>
   <%= javascript_include_tag 'application' %>
     <!-- FOOTER -->
   <%= yield :extra_footer %>
-  <footer> blah </footer>
+  <footer> FOOTER </footer>
 </body>
 </html>

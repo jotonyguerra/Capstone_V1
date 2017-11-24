@@ -1,16 +1,13 @@
 class ReadingsController < ApplicationController
-  before
 
   def index
-
-  end
-  def show
+    @readings = Reading.all
   end
 
-  def new
+  def import
+    Reading.import(params[:file])
+    redirect_to root_path, notice: 'Readings Imported!'
   end
 
-  def create
-  end
 
 end
