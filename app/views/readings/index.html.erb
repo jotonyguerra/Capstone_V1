@@ -1,0 +1,6 @@
+<div id="Dexcom_Form">
+  <%= form_tag import_readings_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import Dexcom Data" %>
+    <% end %>
+</div>

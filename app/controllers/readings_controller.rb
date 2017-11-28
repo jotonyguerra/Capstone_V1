@@ -5,9 +5,18 @@ class ReadingsController < ApplicationController
   end
 
   def import
-    Reading.import(params[:file])
-    redirect_to root_path, notice: 'Readings Imported!'
+    @file = params[:file]
+
+    if @file
+      Reading.import(params[:file])
+      redirect_to root_path, notice: 'Readings Imported!'
+    else
+      flash[:notice] = "please select a valid file"
+      redirect_to readings_path
+    end
   end
+
+  private
 
 
 end

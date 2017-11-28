@@ -16,8 +16,7 @@ feature 'visitor sees  welcome page with a top bar with the title and nav links'
   # should this be a in a separte file?
   scenario "click button to upload dexcom csv data" do
     visit root_path
-
-    expect(page).to have_content("Import Dexcome Data")
+    click_on('Import Dexcom Data')
   end
 
 

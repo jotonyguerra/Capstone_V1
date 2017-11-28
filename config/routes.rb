@@ -1,16 +1,16 @@
 Rails.application.routes.draw do
   root 'homes#index'
 
-  resources :home, only: [:index, :more] do
-    resources :readings, only: [:index, :show]
-      collection {post :import}
-  end
+  resources :homes, only: [:index, :more]
+  resources :readings, only: [:index]
   get 'more', to: 'homes#show'
 
   devise_for :users
 
   authenticate :user do
-    resources :readings, only: [:new, :create, :edit, :update, :destroy]
+    resources :readings, only: [:new, :create, :edit, :update, :destroy] do
+      collection { post :import }
+    end
     resources :comments, only: [:new, :create, :edit, :update, :destroy]
   end
 
