@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171128035422) do
+ActiveRecord::Schema.define(version: 20171201011934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20171128035422) do
 
   create_table "readings", force: :cascade do |t|
     t.datetime "time"
-    t.integer "Index"
+    t.integer "index"
     t.datetime "duration"
     t.string "first_name"
     t.string "last_name"
@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20171128035422) do
     t.integer "glucose_rate_of_change"
     t.integer "transmitter_time"
     t.bigint "user_id"
+    t.string "patient_info"
     t.index ["user_id"], name: "index_readings_on_user_id"
   end
 
