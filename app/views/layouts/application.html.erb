@@ -3,6 +3,7 @@
 <head>
   <title>Diacomm1</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <%= include_gon %>
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag "vendor/modernizr" %>
   <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
@@ -13,7 +14,7 @@
   <nav class="top-bar">
     <ul class="title-area">
       <li class="name">
-        <h1><a href="/">Diacomm</a></h1>
+        <h1><a href="/">Diacomm(WIP)</a></h1>
       </li>
     </ul>
 
@@ -35,16 +36,17 @@
     </section>
   </nav>
 
-  <%- flash.each do |key, value| -%>
-    <div class="flash flash-<%= key %>">
-      <%= value %>
-    </div>
-  <%- end -%>
+
 
   <!-- HERO -->
   <section class="hero">
     <p> HERO </p>
-  
+
+    <%- flash.each do |key, value| -%>
+      <div class="flash flash-<%= key %>">
+        <%= value %>
+      </div>
+    <%- end -%>
   </section>
   <!-- MAIN -->
   <section class="main">

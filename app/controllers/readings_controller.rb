@@ -4,6 +4,16 @@ class ReadingsController < ApplicationController
     @readings = Reading.all
   end
 
+  def show
+    @reading = Reading.find(params[:id])
+  end
+
+  def new
+  end
+
+  def create
+  end
+
   def import
     @file = params[:file]
 
@@ -17,6 +27,9 @@ class ReadingsController < ApplicationController
   end
 
   private
+  def readings_params
+    params.require(:reading).permit(:glucose_value, :time, :patient_info)
+  end
 
 
 end
