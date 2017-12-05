@@ -20,9 +20,3 @@ class Reading < ApplicationRecord
     end
   end
 end
-
-    # csv_text = File.read('...')
-    # csv = CSV.parse(csv_text, :headers => true)
-    # csv.each do |row|
-    #   Reading.create!(row.to_hash)
-    # end

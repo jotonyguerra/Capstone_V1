@@ -2,6 +2,12 @@ class ReadingsController < ApplicationController
 
   def index
     @readings = Reading.all
+    readings = Reading.all
+
+    respond_to do |format|
+      format.html
+      format.json
+    end
   end
 
   def show
@@ -27,6 +33,7 @@ class ReadingsController < ApplicationController
   end
 
   private
+
   def readings_params
     params.require(:reading).permit(:glucose_value, :time, :patient_info)
   end
