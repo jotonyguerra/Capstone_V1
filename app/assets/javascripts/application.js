@@ -20,7 +20,6 @@
 
 $(function(){ $(document).foundation(); });
 
-// ajax to grab Readings object.. need to respond_with json.
 $(document).ready(function () {
   $.ajax({
       type: 'GET',
@@ -29,33 +28,27 @@ $(document).ready(function () {
       dataType: 'json',
       success: function (data) {
           $.each(data, function(index, element) {
-              $('body').append($('<div>', {
-                // Load the Visualization API and the corechart package.
-                google.charts.load('current', {'packages':['corechart']});
 
-                // Set a callback to run when the Google Visualization API is loaded.
-                google.charts.setOnLoadCallback(drawChart);
+            // Load the Visualization API and the corechart package.
+            google.charts.load('current', {'packages':['corechart']});
+            // Set a callback to run when the Google Visualization API is loaded.
+            google.charts.setOnLoadCallback(drawChart);
 
-                // Callback that creates and populates a data table,
-                // instantiates the pie chart, passes in the data and
-                // draws it.
-                function drawChart() {
-                  // Create the data table.
-                  var chardata = new google.visualization.DataTable([
-                    ['Time', 'Glucose Value'],
-                  ]);
-
-                  // Set chart options
-                  var options = {'title':'Glucose Readings',
-                                 'width':800,
-                                 'height':500};
-
-                  // Instantiate and draw our chart, passing in some options.
-                  var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-                  chart.draw(chardata, options);
-                }
-
-              }));
+            function drawChart() {
+              // Create the data table.
+              var data = new google.visualization.DataTable([
+                ['Time', 'Glucose Value'],
+                [element.name, element.name] // conditional?  element = glucosevalue?
+              ]);
+              // Set chart options
+              var options = {'title':'Glucose Readings',
+                             'width':800,
+                             'height':500};
+              // Instantiate and draw our chart, passing in some options.
+              var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+              chart.draw(data, options);
+            };
           });
       }
   });
+});

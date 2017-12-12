@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   devise_for :users
 
   authenticate :user do
-    resources :readings, only: [:new, :create, :edit, :update, :destroy] do
+    resources :readings, only: [:new, :create, :show, :edit, :update, :destroy] do
       collection { post :import }
     end
     resources :comments, only: [:new, :create, :edit, :update, :destroy]
