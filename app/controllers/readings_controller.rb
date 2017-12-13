@@ -2,12 +2,6 @@ class ReadingsController < ApplicationController
 
   def index
     @readings = Reading.all
-    readings = Reading.all
-
-    respond_to do |format|
-      format.html
-      format.json
-    end
   end
 
   def show

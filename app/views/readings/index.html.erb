@@ -9,9 +9,12 @@
 
 
 <section class="main">
-  <%= link_to "Dexcom Readings", reading_path(@readings.id) %>
+  <div class="sample">
+    <%= @readings.each do |r| %>
+      <%= r.glucose_value %>
+    <% end %>
+  </div>
+  <%= link_to "Dexcom Readings", reading_path(@readings) %>
   <div id="chart_div">
-    <!-- <%= line_chart  Reading.select(:glucose_value).where("time != ?", nil),
-  {library: {hAxis: {title: "X"}, vAxis: {title: "Y"}}} %>   -->
   </div>
 </section>

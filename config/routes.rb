@@ -7,6 +7,12 @@ Rails.application.routes.draw do
 
   devise_for :users
 
+  namespace :api do
+    namespace :v1 do
+      resources :readings, only: [:index]
+    end
+  end
+
   authenticate :user do
     resources :readings, only: [:new, :create, :show, :edit, :update, :destroy] do
       collection { post :import }

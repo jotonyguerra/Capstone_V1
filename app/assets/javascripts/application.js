@@ -29,26 +29,7 @@ $(document).ready(function () {
       success: function (data) {
           $.each(data, function(index, element) {
 
-            // Load the Visualization API and the corechart package.
-            google.charts.load('current', {'packages':['corechart']});
-            // Set a callback to run when the Google Visualization API is loaded.
-            google.charts.setOnLoadCallback(drawChart);
-
-            function drawChart() {
-              // Create the data table.
-              var data = new google.visualization.DataTable([
-                ['Time', 'Glucose Value'],
-                [element.name, element.name] // conditional?  element = glucosevalue?
-              ]);
-              // Set chart options
-              var options = {'title':'Glucose Readings',
-                             'width':800,
-                             'height':500};
-              // Instantiate and draw our chart, passing in some options.
-              var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-              chart.draw(data, options);
-            };
           });
-      }
-  });
-});
+        }
+      )}
+    };
