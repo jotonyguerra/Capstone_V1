@@ -57,7 +57,5 @@ gem 'shoulda-matchers', group: [:development, :test], require: false
 gem 'teaspoon-jasmine'
 gem 'devise'
 gem 'foundation-rails'
-gem 'chartkick'
-gem 'groupdate'
 gem 'jquery-rails'
-gem 'gon'
+gem "active_model_serializers"
