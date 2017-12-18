@@ -15,19 +15,35 @@
 //= require jquery_ujs
 //= require Chart.bundle
 //= require_tree .
-//= require chartkick
-
 
 $(function(){ $(document).foundation(); });
 
 $(document).ready(function () {
   $.ajax({
       type: 'GET',
-      url: '/readings',
+      url: 'api/v1/readings',
       data: { get_param: 'readings' },
       dataType: 'json',
       success: function (data) {
           $.each(data, function(index, element) {
+            google.charts.load('current', {'packages':['corechart']});
+            google.charts.setOnLoadCallback(drawChart);
+
+            function drawChart() {
+              var data = google.visualization.arrayToDataTable([
+                // How to set data to the data from the AJAX call?
+              ]);
+
+              var options = {
+                title: 'Company Performance',
+                curveType: 'function',
+                legend: { position: 'bottom' }
+              };
+
+              var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+              chart.draw(data, options);
+            }
 
           });
         }
