@@ -13,10 +13,9 @@
 //= require rails-ujs
 //= require jquery
 //= require jquery_ujs
-//= require Chart.bundle
 //= require_tree .
 
-$(function(){ $(document).foundation(); });
+// $(function(){ $(document).foundations(); });
 
 $(document).ready(function () {
   $.ajax({
@@ -25,27 +24,34 @@ $(document).ready(function () {
       data: { get_param: 'readings' },
       dataType: 'json',
       success: function (data) {
-          $.each(data, function(index, element) {
-            google.charts.load('current', {'packages':['corechart']});
-            google.charts.setOnLoadCallback(drawChart);
+           google.charts.load('current', {'packages':['corechart']});
+           google.charts.setOnLoadCallback(drawChart);
 
-            function drawChart() {
-              var data = google.visualization.arrayToDataTable([
-                // How to set data to the data from the AJAX call?
-              ]);
+           function drawChart() {
+             var chartdata = google.visualization.arrayToDataTable([
+               ['time', 'glucose'],
+               [data.time, data.glucose_value]
 
-              var options = {
-                title: 'Company Performance',
-                curveType: 'function',
-                legend: { position: 'bottom' }
-              };
+             ]);
 
-              var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+             var options = {
+               hAxis: {
+                 title: 'Time'
+               },
+               vAxis: {
+                 title: 'Glucose'
+               },
+               series: {
+                 1: {curveType: 'function'}
+               }
+             };
 
-              chart.draw(data, options);
-            }
+             var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
 
-          });
-        }
-      )}
-    };
+             chart.draw(chartdata, options);
+           }
+
+      }
+
+      })
+    });
