@@ -15,7 +15,7 @@
 //= require jquery_ujs
 //= require_tree .
 
-// $(function(){ $(document).foundations(); });
+// $(function(){ $(document).foundation(); });
 
 $(document).ready(function () {
   $.ajax({
@@ -26,12 +26,30 @@ $(document).ready(function () {
       success: function (data) {
            google.charts.load('current', {'packages':['corechart']});
            google.charts.setOnLoadCallback(drawChart);
-
+           console.log(data);
+           function walk(data) {
+             for (var key in data) {
+               if (data.hasOwnProperty('glucose_value')) {
+                 var val = data['glucose_value'];
+                 console.log(val);
+                 walk(val);
+               }
+             }
+           }
+           walk(data);
            function drawChart() {
              var chartdata = google.visualization.arrayToDataTable([
-               ['time', 'glucose'],
-               [data.time, data.glucose_value]
-
+               ['number', 'glucose value (mg/dl)'],
+               [10, 10],
+               [10.5, 200],
+               [11, 180],
+               [12, 150]
+              //  [13, 160]  Sample data
+              //  [data.time, parseInt(data.glucose_value)]
+              // how to iterate over json object to display all glucose value and time ?
+              // for ?
+              // json.parse(data?)?
+              //
              ]);
 
              var options = {
