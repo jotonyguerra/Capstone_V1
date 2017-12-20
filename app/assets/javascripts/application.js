@@ -26,30 +26,20 @@ $(document).ready(function () {
       success: function (data) {
            google.charts.load('current', {'packages':['corechart']});
            google.charts.setOnLoadCallback(drawChart);
-           console.log(data);
-           function walk(data) {
-             for (var key in data) {
-               if (data.hasOwnProperty('glucose_value')) {
-                 var val = data['glucose_value'];
-                 console.log(val);
-                 walk(val);
-               }
-             }
-           }
-           walk(data);
+
+           var readings = data.readings;
+
+
+
            function drawChart() {
              var chartdata = google.visualization.arrayToDataTable([
-               ['number', 'glucose value (mg/dl)'],
-               [10, 10],
-               [10.5, 200],
-               [11, 180],
-               [12, 150]
-              //  [13, 160]  Sample data
-              //  [data.time, parseInt(data.glucose_value)]
-              // how to iterate over json object to display all glucose value and time ?
-              // for ?
-              // json.parse(data?)?
-              //
+               [ {type: 'date', label: 'Time'}, 'number'],
+
+               readings.forEach(function(item){
+                 let date = new Date(item.time);
+                 if (item.glucose_value != null && item.time != null)
+                 { [`Date(${date.getYear()}, ${date.getMonth()}, ${date.getDate()})`, item.glucose_value]}
+               })
              ]);
 
              var options = {
