@@ -28,38 +28,57 @@ $(document).ready(function () {
            google.charts.setOnLoadCallback(drawChart);
 
            var readings = data.readings;
+           var timeArray = readings.map(function(obj) {
+             var rObj = {};
+             rObj = new Date(obj.time);
+             return rObj;
+           });
 
+           var timeChart = readings.slice(8).map(function(obj) {
+             var rObj = {};
+             date = new Date(obj.time);
+             rObj = [`Date(${date.getFullYear()}, ${date.getMonth()}, ${date.getDate()})`, obj.glucose_value];
+             return rObj;
+           });
+          //  var glucoseArray = readings.map(function(obj) {
+          //    var rObj = {};
+          //    rObj = obj.glucose_value;
+          //    return rObj;
+          //  });
 
+           console.log(timeChart);
 
            function drawChart() {
              var chartdata = google.visualization.arrayToDataTable([
-               [ {type: 'date', label: 'Time'}, 'number'],
-
-               readings.forEach(function(item){
-                 let date = new Date(item.time);
-                 if (item.glucose_value != null && item.time != null)
-                 { [`Date(${date.getYear()}, ${date.getMonth()}, ${date.getDate()})`, item.glucose_value]}
-               })
+              [{type: 'date', label:'Time'}, {type: 'number', label:'Glucose value'}],
+              timeChart
              ]);
 
              var options = {
-               hAxis: {
-                 title: 'Time'
-               },
-               vAxis: {
-                 title: 'Glucose'
-               },
-               series: {
-                 1: {curveType: 'function'}
-               }
+            //    hAxis: {
+            //      viewWindow: {
+            //        min: new Date(2017, 2, 31, 18),
+            //        max: new Date(2015, 4, 3, 1)
+            //      },
+            //      gridlines: {
+            //        count: -1,
+            //        units: {
+            //          days: {format: ['MMM dd']},
+            //          hours: {format: ['HH:mm', 'ha']},
+            //        }
+            //      },
+            //      minorGridlines: {
+            //        units: {
+            //          hours: {format: ['hh:mm:ss a', 'ha']},
+            //          minutes: {format: ['HH:mm a Z', ':mm']}
+            //        }
+            //      }
+            //    }
+              height: 450
              };
-
              var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
-
              chart.draw(chartdata, options);
            }
-
-      }
-
+         }
       })
     });
