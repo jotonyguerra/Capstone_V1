@@ -66,37 +66,17 @@ $(document).ready(function () {
 
 
            function drawChart() {
+             
              var chartdata = new google.visualization.DataTable();
-
                 chartdata.addColumn('datetime', 'Time of Day');
                 chartdata.addColumn('number', 'Glucose Value');
 
                 chartdata.addRows(timeChart);
-              // IDK why this doesnt work.. returning an array with two element.. forEach?
-              // Uncaught (in promise) Error: Row 1 has 3661 columns, but must have 2
 
              var options = {
-            //    hAxis: {
-            //      viewWindow: {
-            //        min: new Date(2017, 2, 31, 18),
-            //        max: new Date(2015, 4, 3, 1)
-            //      },
-            //      gridlines: {
-            //        count: -1,
-            //        units: {
-            //          days: {format: ['MMM dd']},
-            //          hours: {format: ['HH:mm', 'ha']},
-            //        }
-            //      },
-            //      minorGridlines: {
-            //        units: {
-            //          hours: {format: ['hh:mm:ss a', 'ha']},
-            //          minutes: {format: ['HH:mm a Z', ':mm']}
-            //        }
-            //      }
-            //    }
               height: 450
              };
+
              var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
              chart.draw(chartdata, options);
            }
