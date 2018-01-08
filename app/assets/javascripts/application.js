@@ -28,31 +28,52 @@ $(document).ready(function () {
            google.charts.setOnLoadCallback(drawChart);
 
            var readings = data.readings;
+
            var timeArray = readings.map(function(obj) {
-             var rObj = {};
+             var rObj = [];
              rObj = new Date(obj.time);
              return rObj;
            });
 
+
            var timeChart = readings.slice(8).map(function(obj) {
-             var rObj = {};
+             var rObj = [];
              date = new Date(obj.time);
-             rObj = [`Date(${date.getFullYear()}, ${date.getMonth()}, ${date.getDate()})`, obj.glucose_value];
+             rObj = [date, obj.glucose_value];
              return rObj;
            });
-          //  var glucoseArray = readings.map(function(obj) {
-          //    var rObj = {};
-          //    rObj = obj.glucose_value;
-          //    return rObj;
-          //  });
 
            console.log(timeChart);
 
+         function printArray(arr){
+           for(var i = 0; i < arr.length; i++) {
+             if(arr[i] != arr.length) {
+               console.log(arr[i]);
+               return arr[i] + ',';
+             }
+             else {
+               return null;
+             }
+            }
+          };
+
+          function chartsArray(arr) {
+            arr.forEach(function(element) {
+              return element;
+            })
+          };
+
+
+
            function drawChart() {
-             var chartdata = google.visualization.arrayToDataTable([
-              [{type: 'date', label:'Time'}, {type: 'number', label:'Glucose value'}],
-              timeChart
-             ]);
+             var chartdata = new google.visualization.DataTable();
+
+                chartdata.addColumn('datetime', 'Time of Day');
+                chartdata.addColumn('number', 'Glucose Value');
+
+                chartdata.addRows(timeChart);
+              // IDK why this doesnt work.. returning an array with two element.. forEach?
+              // Uncaught (in promise) Error: Row 1 has 3661 columns, but must have 2
 
              var options = {
             //    hAxis: {
