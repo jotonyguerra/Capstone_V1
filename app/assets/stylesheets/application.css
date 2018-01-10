@@ -30,10 +30,11 @@
 .main {
   margin: auto;
   background-color: gray;
+  background-image: url(http://www.vivo.colostate.edu/hbooks/pathphys/endocrine/pancreas/insulin2_6.gif);
 }
 
 .footer {
-  background-color: blue;
+  background-color: black;
 }
 
 .menu {
@@ -43,7 +44,12 @@
     &:hover {background: lighten(#333, 20%);}
   }*/
 }
-
+#Dexcom_Form {
+  margin: auto;
+  padding-left:  auto;
+  border-style: inset;
+  border-color: inherit;
+}
 /*.image {
   margin-left: 20%;
   align-self: center;

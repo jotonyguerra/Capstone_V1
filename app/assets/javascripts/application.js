@@ -14,7 +14,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-
 // $(function(){ $(document).foundation(); });
 
 $(document).ready(function () {
@@ -29,13 +28,6 @@ $(document).ready(function () {
 
            var readings = data.readings;
 
-           var timeArray = readings.map(function(obj) {
-             var rObj = [];
-             rObj = new Date(obj.time);
-             return rObj;
-           });
-
-
            var timeChart = readings.slice(8).map(function(obj) {
              var rObj = [];
              date = new Date(obj.time);
@@ -43,30 +35,8 @@ $(document).ready(function () {
              return rObj;
            });
 
-           console.log(timeChart);
-
-         function printArray(arr){
-           for(var i = 0; i < arr.length; i++) {
-             if(arr[i] != arr.length) {
-               console.log(arr[i]);
-               return arr[i] + ',';
-             }
-             else {
-               return null;
-             }
-            }
-          };
-
-          function chartsArray(arr) {
-            arr.forEach(function(element) {
-              return element;
-            })
-          };
-
-
-
            function drawChart() {
-             
+
              var chartdata = new google.visualization.DataTable();
                 chartdata.addColumn('datetime', 'Time of Day');
                 chartdata.addColumn('number', 'Glucose Value');
@@ -74,7 +44,18 @@ $(document).ready(function () {
                 chartdata.addRows(timeChart);
 
              var options = {
-              height: 450
+              title: 'Glucose Readings',
+              height: 450,
+              selectionMode: 'multiple',
+              // Trigger tooltips
+              // on selections.
+              tooltip: {trigger: 'selection'},
+              // Group selections
+              // by x-value.
+              aggregationTarget: 'Time of Day',
+              
+              explorer: { axis: 'horizontal' }
+
              };
 
              var chart = new google.visualization.LineChart(document.getElementById('chart_div'));

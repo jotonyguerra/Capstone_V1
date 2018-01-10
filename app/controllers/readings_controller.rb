@@ -1,4 +1,5 @@
 class ReadingsController < ApplicationController
+  before_action :authenticate_user!
 
   def index
     @readings = Reading.all
@@ -19,7 +20,7 @@ class ReadingsController < ApplicationController
 
     if @file
       Reading.import(params[:file])
-      redirect_to root_path, notice: 'Readings Imported!'
+      redirect_to readings_path, notice: 'Readings Imported!'
     else
       flash[:notice] = "please select a valid file"
       redirect_to readings_path
@@ -29,7 +30,7 @@ class ReadingsController < ApplicationController
   private
 
   def readings_params
-    params.require(:reading).permit(:glucose_value, :time, :patient_info)
+    params.require(:reading).permit(:glucose_value, :time, :patient_info, :user_id)
   end
 
 
