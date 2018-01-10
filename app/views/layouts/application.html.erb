@@ -35,12 +35,9 @@
     </section>
   </nav>
 
-
-
   <!-- HERO -->
   <section class="hero">
-    <p> HERO </p>
-
+    <h1> HERO </h1>
     <%- flash.each do |key, value| -%>
       <div class="flash flash-<%= key %>">
         <%= value %>
@@ -55,6 +52,5 @@
   <%= javascript_include_tag 'application' %>
     <!-- FOOTER -->
   <%= yield :extra_footer %>
-  <footer> FOOTER </footer>
 </body>
 </html>
