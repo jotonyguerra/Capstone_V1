@@ -44,7 +44,6 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'pry-rails', group: [:development, :test]
@@ -56,6 +55,7 @@ gem 'valid_attribute', group: [:development, :test]
 gem 'shoulda-matchers', group: [:development, :test], require: false
 gem 'teaspoon-jasmine'
 gem 'devise'
-gem 'foundation-rails'
 gem 'jquery-rails'
 gem "active_model_serializers"
+gem 'bootstrap-sass'
+gem 'autoprefixer-rails'

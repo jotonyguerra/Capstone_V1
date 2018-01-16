@@ -16,6 +16,11 @@ feature 'signed in user imports dexcom data' do
      click_button('Import Dexcom Data')
      expect(page).to have_content("please select a valid file")
    end
+   scenario "user attempts to upload a non csv file" do
+     visit root_path
+     click_link("Import Dexcom Data")
+
+   end
 # need js driver?
    scenario "user attempts to upload a correct file" do
      visit root_path

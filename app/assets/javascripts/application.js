@@ -13,8 +13,8 @@
 //= require rails-ujs
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-sprockets
 //= require_tree .
-// $(function(){ $(document).foundation(); });
 
 $(document).ready(function () {
   $.ajax({
@@ -53,7 +53,7 @@ $(document).ready(function () {
               // Group selections
               // by x-value.
               aggregationTarget: 'Time of Day',
-              
+
               explorer: { axis: 'horizontal' }
 
              };
