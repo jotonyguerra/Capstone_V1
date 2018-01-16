@@ -8,44 +8,41 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+  <div class="container">
+    <div class="row">
+    <section class="col-12">
 
-  <nav class="top-bar">
-    <ul class="dropdown menu" data-dropdown-menu>
-      <li class="name">
-        <h1><a href="/">Diacomm(WIP)</a></h1>
-      </li>
-      <li><%= link_to "What is Diabetes?", more_path %></li>
-      <li><a class="navigation" href="https://en.wikipedia.org/wiki/Diabetes_mellitus_type_1">
-          More on T1 Diabetes!</a>
-      </li>
-    </ul>
-
-
+      <nav id="navbar-site" class="fixed-top navbar-inverse bg-primary navbar-expand-sm">
+        <ul class="nav nav-pills">
+          <li class="nav-item"><a class="nav-link navbar-brand" href="/">Diacomm(WIP)</a></li>
+          <li class="nav-item"><%= link_to "Diabetes?",more_path, class: "-inverse"%></li>
+          <li class="nav-item"><a class="nav-link bg-inverse" href="https://en.wikipedia.org/wiki/Diabetes_mellitus_type_1">More T1 Diabetes!</a></li>
         <%- if current_user -%>
-          <li><%= link_to 'Sign Out', destroy_user_session_path, method: :delete %></li>
+          <li class="nav-item"><%= link_to 'Sign Out', destroy_user_session_path, class: "nav-link text-primary", method: :delete %></li>
         <%- else -%>
-          <li><%= link_to 'Sign Up', new_user_registration_path %></li>
-          <li><%= link_to 'Sign In', new_user_session_path %></li>
+          <li class="nav-item"><%= link_to 'Sign Up', new_user_registration_path, class: "nav-link" %></li>
+          <li class="nav-item"><%= link_to 'Sign In', new_user_session_path, class: "nav-link"%></li>
         <%- end -%>
-    </section>
-  </nav>
+        </ul>
+      </div>
+    </nav>
 
   <!-- HERO -->
-  <section class="hero">
-    <h1> HERO </h1>
+  <div class="content" id="flash_graph">
     <%- flash.each do |key, value| -%>
       <div class="flash flash-<%= key %>">
         <%= value %>
       </div>
     <%- end -%>
-  </section>
+  </div>
   <!-- MAIN -->
-  <section class="main">
+  <div class="main">
     <%= yield :charts_js %>
     <%= yield %>
-  </section>
+  </div>
   <%= javascript_include_tag 'application' %>
     <!-- FOOTER -->
   <%= yield :extra_footer %>
+</div>
 </body>
 </html>
