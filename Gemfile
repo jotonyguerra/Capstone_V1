@@ -59,3 +59,4 @@ gem 'jquery-rails'
 gem "active_model_serializers"
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
+gem 'jquery-turbolinks'
