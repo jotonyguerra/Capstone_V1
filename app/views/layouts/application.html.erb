@@ -4,12 +4,19 @@
   <title>Diacomm1</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <%= stylesheet_link_tag 'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="container">
-      <nav id="navbar-site" class="fixed-top navbar-inverse bg-primary navbar-toggleable-md">
+  <div class="container bg-danger">
+
+      <nav id="navbar-site" class="fixed-top navbar-inverse bg-primary navbar-toggleable-sm">
+
+        <button class="btn btn-success btn-lg btn-outline-primary navbar-toggle" type="button" data-toggle="collapse" data-target="#navigation"
+          aria-controls="navigation" aria-expanded="false" aria-label="Toggle Navigation">
+          <span class="navbar-toggler-icon">Menu</span>
+        </button>
 
         <div class="collapse navbar-collapse" id="navigation">
           <ul class="nav navbar-nav">
@@ -32,39 +39,26 @@
             <li class="nav-item"><%= link_to 'Sign In', new_user_session_path, class: "nav-link"%></li>
             <%- end -%>
           </ul>
-
-          <button class="btn btn-large navbar-toggler-right mt-2" type="button" data-toggle="collapse" data-target="#navigation"
-            aria-controls="navigation" aria-expanded="false" aria-label="Toggle Navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
       </div>
     </nav>
-  </div>
-</div>
-  <div class="container">
-
-
-  <!-- HERO -->
-  <div class="content" id="flash_graph">
-    <%- flash.each do |key, value| -%>
-      <div class="flash flash-<%= key %>">
-        <%= value %>
-      </div>
-    <%- end -%>
-  </div>
-  <!-- MAIN -->
 
   <div class="main">
+  <!-- flash  -->
+    <div class="content" id="flash_graph">
+      <%- flash.each do |key, value| -%>
+        <div class="flash flash-<%= key %>">
+          <%= value %>
+        </div>
+        <%- end -%>
+    </div>
+
     <%= yield :charts_js %>
     <%= yield %>
-    <div class="form-group">
+  <div class="form-group">
       <label for="comment">Comment:</label>
       <textarea class="form-control" rows="5" id="comment"></textarea>
-    </div>
   </div>
-  <%= javascript_include_tag 'application' %>
-    <!-- FOOTER -->
-  <%= yield :extra_footer %>
 </div>
+</div> <!-- container -->
 </body>
 </html>

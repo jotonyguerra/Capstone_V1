@@ -26,6 +26,11 @@ $(document).ready(function () {
            google.charts.load('current', {'packages':['corechart']});
            google.charts.setOnLoadCallback(drawChart);
 
+           $(window).resize(function(){
+             drawChart();
+
+           });
+
            var readings = data.readings;
 
            var timeChart = readings.slice(8).map(function(obj) {
@@ -36,16 +41,13 @@ $(document).ready(function () {
            });
 
            function drawChart() {
-
              var chartdata = new google.visualization.DataTable();
                 chartdata.addColumn('datetime', 'Time of Day');
                 chartdata.addColumn('number', 'Glucose Value');
 
                 chartdata.addRows(timeChart);
-
              var options = {
-              title: 'Glucose Readings',
-              height: 450,
+              title: 'Glucose Readings (mg/dl)',
               selectionMode: 'multiple',
               // Trigger tooltips
               // on selections.
@@ -53,12 +55,9 @@ $(document).ready(function () {
               // Group selections
               // by x-value.
               aggregationTarget: 'Time of Day',
-
               explorer: { axis: 'horizontal' }
-
              };
-
-             var chart = new google.visualization.LineChart(document.getElementById('chart_div'));
+             var chart = new google.visualization.LineChart(document.getElementById('chart'));
              chart.draw(chartdata, options);
            }
          }

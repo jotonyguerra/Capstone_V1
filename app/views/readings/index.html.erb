@@ -1,19 +1,23 @@
-
-  <div class="hero">
-    <div class="container mt-5">
-
+<div class="main mt-4">
+  <div class="container">
     <div class="row">
-      <%= form_tag import_readings_path, multipart: true do %>
-      <%= file_field_tag :file %>
-      <%= submit_tag "Import Dexcom Data" %>
-      <% end %>
-    </div>
-  </div>
-</div>
+      <section class="col align-items-center">
+        <div class="form-group">
+          <div class="input-group">
+              <%= form_tag import_readings_path, multipart: true do %>
+              <%= file_field_tag :file %>
+              <%= button_tag(type: 'submit', class: "btn btn-default") do %>
+                <i class="icon-ok icon-white"></i> Import Data
+                <% end %>
+              <% end %>
+          </div> <!--input-group-->
+        </div> <!--form-group-->
+      </section> <!-- col -->
+    </div> <!-- row -->
+</div> <!-- container -->
 
 <div class="container">
-  <div id="notes"> <h3 style="color:red;">Work on titles/ legends. Work on views. work on button to scale the axis/time </h3>
-  <p style="color:red"> Work on failure navigatino for data import! work on tests!</p></div>
-  <div id="chart_div">
-  </div>
+  <!-- chart div is for google charts display -->
+  <div id="chart_wrap"><div id="chart"></div></div>
+</div>
 </div>
