@@ -26,9 +26,9 @@ $(document).ready(function () {
            google.charts.load('current', {'packages':['corechart']});
            google.charts.setOnLoadCallback(drawChart);
 
+          //  redraws chart when resized? responsive
            $(window).resize(function(){
              drawChart();
-
            });
 
            var readings = data.readings;
@@ -47,11 +47,14 @@ $(document).ready(function () {
 
                 chartdata.addRows(timeChart);
              var options = {
-              title: 'Glucose Readings (mg/dl)',
+              title: 'Glucose Readings',
+              legend:'left',
+              hAxis: {title: 'Date Time'},
+              vAxis: {title: "Glucose Value (mg/dl)"},
               selectionMode: 'multiple',
               // Trigger tooltips
               // on selections.
-              tooltip: {trigger: 'selection'},
+              tooltip: {trigger: 'hover'},
               // Group selections
               // by x-value.
               aggregationTarget: 'Time of Day',
