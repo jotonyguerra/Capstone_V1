@@ -1,15 +1,20 @@
-<div class="container">
-  <div class="main d-flex">
-    <div class="row justify-item-center">
-      <section class="col">
-          <h2> Welcome </h2>
-          <div class="container mr-2">
+<section class="main">
+    <div class="row bg-info">
+      <div class="col col-sm-12 bg-warning">
+        <div class="col content-align-center">
+          <h1>Welcome</h1>
+          <p> Diacomm is a project that allows Continuous Glucose Monitoring (CGM)
+            data to be uploaded into a google charts API. Diacomm will allow you to comment
+            and mark any readings that is of interest. </p>
+           <h2>Mission</h2>
+           <p>Allow diabetics and other glucose monitorers to have a
+             representation of their data that they can customize and comment on.
+             Make the tracking of glucose data easier! </p>
+         </div>
+          <div class="container bg-primary">
             <div id="chart_wrap"><div id="chart" style="max-width:90%"></div></div>
-
           <%= link_to "Import Dexcom Data", readings_path %>
         </div>
-
-      </section>
     </div> <!-- row -->
   </div> <!-- main -->
- <!-- container -->
+</section><!-- container -->
