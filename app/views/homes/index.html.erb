@@ -1,6 +1,6 @@
-<section class="main">
-    <div class="row bg-info">
-      <div class="col col-sm-12 bg-warning">
+  <div class="row"></div>
+    <div class="row">
+      <div class="col col-sm-12 bg-warning mt-5">
         <div class="col content-align-center">
           <h1>Welcome</h1>
           <p> Diacomm is a project that allows Continuous Glucose Monitoring (CGM)
@@ -11,10 +11,11 @@
              representation of their data that they can customize and comment on.
              Make the tracking of glucose data easier! </p>
          </div>
-          <div class="container bg-primary">
+          <div class="row ml-5 pl-5">
+            <div class="container">
             <div id="chart_wrap"><div id="chart" style="max-width:90%"></div></div>
           <%= link_to "Import Dexcom Data", readings_path %>
         </div>
+        </div>
     </div> <!-- row -->
   </div> <!-- main -->
-</section><!-- container -->

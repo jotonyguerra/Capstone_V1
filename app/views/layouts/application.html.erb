@@ -10,9 +10,8 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="bg">
-  <div class="container bg-danger">
 
+  <div class="bg">
       <nav id="navbar-site" class="fixed-top navbar-inverse bg-primary navbar-toggleable-sm">
         <!--  collapable navbar button -->
         <button class="btn btn-success btn-lg btn-outline-primary navbar-toggle" type="button" data-toggle="collapse" data-target="#navigation"
@@ -43,9 +42,8 @@
           </ul>
       </div>
     </nav>
-
-  <section class="main">
-  <!-- flash  -->
+<div class="container bg-danger">
+  <section class="main mt-5">
     <div class="content" id="flash_graph">
       <%- flash.each do |key, value| -%>
         <div class="flash flash-<%= key %>">
@@ -53,9 +51,8 @@
         </div>
         <%- end -%>
     </div> <!-- flash -->
-
-    <%= yield :charts_js %>
     <%= yield %>
+
   <div class="form-group">
       <label for="comment">Comment:</label>
       <textarea class="form-control" rows="5" id="comment"></textarea>
