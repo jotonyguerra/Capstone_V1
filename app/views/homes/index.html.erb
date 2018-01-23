@@ -1,21 +1,23 @@
-  <div class="row"></div>
-    <div class="row">
-      <div class="col col-sm-12 bg-warning mt-5">
-        <div class="col content-align-center">
-          <h1>Welcome</h1>
-          <p> Diacomm is a project that allows Continuous Glucose Monitoring (CGM)
-            data to be uploaded into a google charts API. Diacomm will allow you to comment
-            and mark any readings that is of interest. </p>
-           <h2>Mission</h2>
-           <p>Allow diabetics and other glucose monitorers to have a
-             representation of their data that they can customize and comment on.
-             Make the tracking of glucose data easier! </p>
-         </div>
-          <div class="row ml-5 pl-5">
-            <div class="container">
-            <div id="chart_wrap"><div id="chart" style="max-width:90%"></div></div>
-          <%= link_to "Import Dexcom Data", readings_path %>
-        </div>
-        </div>
-    </div> <!-- row -->
-  </div> <!-- main -->
+<div class="row"></div>
+  <div class="row">
+    <div class="col col-sm-12 bg-info mt-5">
+      <div class="col content-align-center">
+        <h1>Welcome</h1>
+        <p> Diacomm is a project that allows Continuous Glucose Monitoring (CGM)
+          data to be uploaded into a google charts API. Diacomm will allow you to comment
+          and mark any readings that is of interest. </p>
+         <h2>Mission</h2>
+         <p>Allow diabetics and other glucose monitorers to have a
+           representation of their data that they can customize and comment on.
+           Make the tracking of glucose data easier! </p>
+        <h2> Example Display </h2>
+        <p> This is a sample of my CGM data from the dates May 22nd 2017 to June 2nd 2017 </p>
+      </div>
+      <div class="row ml-5 pl-5">
+          <div id="chart_wrap"><div id="chart" style="max-width:90%"></div></div>
+        <%= link_to "Import Dexcom Data", readings_path %>
+      </div>
+      </div>
+  </div> <!-- row -->
+
+<!-- add function to make readings public to other users -->
