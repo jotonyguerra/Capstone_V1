@@ -51,3 +51,5 @@ gem "active_model_serializers"
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'jquery-turbolinks'
+
+ruby "2.3.3"
