@@ -1,6 +1,4 @@
 source 'https://rubygems.org'
-ruby "2.3.3"
-
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -53,3 +51,4 @@ gem "active_model_serializers"
 gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'jquery-turbolinks'
+ruby "2.3.3"
