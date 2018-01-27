@@ -13,11 +13,15 @@
         <h2> Example Display </h2>
         <p> This is a sample of my CGM data from the dates May 22nd 2017 to June 2nd 2017 </p>
       </div>
-      <div class="row ml-5 pl-5">
-          <div id="chart_wrap"><div id="chart" style="max-width:90%"></div></div>
-        <%= link_to "Import Dexcom Data", readings_path %>
-      </div>
-      </div>
-  </div> <!-- row -->
-
+    <div class="row ml-5 pl-5">
+        <div id="chart_wrap"><div id="chart" style="max-width:90%"></div></div>
+    </div>
+  </div>
+</div> <!-- row -->
+<div class="row mb-5 mt-5"> </div>
+<div class="row bg-dark">
+  <div class="col col-sm-1 align-middle">
+  <a class="btn btn-success btn-large" href="/readings">Import Dexcom Data</a>
+</div>
+</div>
 <!-- add function to make readings public to other users -->
