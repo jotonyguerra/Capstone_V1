@@ -5,3 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+readings = Readings.import("/Users/jotonyguerra/challenges/capstone_v1/Diacomm1/app/assets/dexcom/CLARITY_Export_Guerra_Jotony_2017-11-09+033852.csv")

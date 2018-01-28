@@ -48,9 +48,11 @@ $(document).ready(function () {
                 chartdata.addRows(timeChart);
              var options = {
               title: 'Glucose Readings',
-              legend:'left',
               hAxis: {title: 'Date Time'},
-              vAxis: {title: "Glucose Value (mg/dl)"},
+              vAxis: {title: "Glucose Value (mg/dl)",
+                baseline: 130,
+              },
+
               selectionMode: 'multiple',
               // Trigger tooltips
               // on selections.
@@ -59,6 +61,7 @@ $(document).ready(function () {
               // by x-value.
               aggregationTarget: 'Time of Day',
               explorer: { axis: 'horizontal' }
+
              };
              var chart = new google.visualization.LineChart(document.getElementById('chart'));
              chart.draw(chartdata, options);

@@ -11,7 +11,7 @@
           <div class="input-group align-items-center">
               <%= form_tag import_readings_path, multipart: true do %>
               <%= file_field_tag :file %>
-              <%= button_tag(type: 'submit', class: "btn btn-default") do %>
+              <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
                 <i class="icon-ok icon-white"></i> Import Data
                 <% end %>
               <% end %>
