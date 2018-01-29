@@ -40,6 +40,29 @@ $(document).ready(function () {
              return rObj;
            });
 
+           var glucoseValue = readings.slice(8).map(function(obj) {
+             var rObj = [];
+             rObj = [obj.glucose_value];
+             return rObj;
+           })
+          //  function to grab averages glucose for all values
+          // need to add function for specific date range!
+          // change jquery selector
+          $("#ImageHosting").click(function () {
+            alert("test");
+
+            function averageGlusoce() {
+              var sum = 0;
+              for (var i=0; i < glucoseValue.length; i++) {
+                sum += Number(glucoseValue[i]);
+              }
+              let avg = sum / glucoseValue.length;
+
+              console.log(avg);
+            }
+          });
+
+
            function drawChart() {
              var chartdata = new google.visualization.DataTable();
                 chartdata.addColumn('datetime', 'Time of Day');
@@ -52,7 +75,6 @@ $(document).ready(function () {
               vAxis: {title: "Glucose Value (mg/dl)",
                 baseline: 130,
               },
-
               selectionMode: 'multiple',
               // Trigger tooltips
               // on selections.
