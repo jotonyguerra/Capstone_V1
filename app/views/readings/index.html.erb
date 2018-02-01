@@ -31,4 +31,6 @@
       <button class="btn btn-large btn-primary" id="average">Find Average</button>
     </div>
   </div>
+  <% @comment = Comment.new %>
+  <%= render partial: "comments/form", object: @new_comment, full: true %>
 </div>

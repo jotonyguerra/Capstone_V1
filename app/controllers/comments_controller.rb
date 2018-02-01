@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
   end
 
   def new
+    comment = Comment.new
     @comment = Comment.new
   end
 
@@ -22,7 +23,7 @@ class CommentsController < ApplicationController
       redirect_to root_path
     end
   end
-  
+
   def edit
   end
 

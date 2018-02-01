@@ -52,16 +52,12 @@ $(document).ready(function () {
                sum += Number(glucoseValue[i]);
              }
              var avg = sum / glucoseValue.length;
-
-             console.log(avg);
              return avg;
            }
-          //  function to grab averages glucose for all values
+
           // need to add function for specific date range!
-          // change jquery selector
           $('#average').click(function(event) {
             alert('Average glucose is ' + averageGlucose() + ' mg/dl!');
-
           });
 
 
@@ -88,7 +84,10 @@ $(document).ready(function () {
 
              };
              var chart = new google.visualization.LineChart(document.getElementById('chart'));
+             var chart2 = new google.visualization.LineChart(document.getElementById('chart'));
+
              chart.draw(chartdata, options);
+             chart2.draw(chartdata, options);
            }
          }
       })
