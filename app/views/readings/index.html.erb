@@ -1,30 +1,34 @@
 <div class="main">
-    <div class="row">
-
+  <div class="row">
+    <div class="col col-lg-12 col--lg-offset mx-4">
       <div class="info">
         <h3 class="text-align-center"> Please Select a Dexcom Clarity CSV file to be displayed! </h3>
       </div>
+  </div>
 
-      <section class="col col-lg-2 col--lg-offset mx-4">
-
-        <div class="form-group">
-          <div class="input-group align-items-center">
-              <%= form_tag import_readings_path, multipart: true do %>
-              <%= file_field_tag :file %>
-              <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
-                <i class="icon-ok icon-white"></i> Import Data
-                <% end %>
-              <% end %>
-          </div> <!--input-group-->
-        </div> <!--form-group-->
-      </section> <!-- col -->
-
-    </div> <!-- row -->
+  <section class="col col-lg-12 col--lg-offset mx-4">
+    <div class="form-group">
+      <div class="input-group align-items-center">
+        <%= form_tag import_readings_path, multipart: true do %>
+        <%= file_field_tag :file %>
+        <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+          <i class="icon-ok icon-white"></i> Import Data
+          <% end %>
+        <% end %>
+      </div> <!--input-group-->
+    </div> <!--form-group-->
+  </section> <!-- col -->
+</div> <!-- row -->
 
     <!-- Add function to view max and min values. need range indicator lines. -->
-    <div class="row ml-5 pl-5">
-        <div id="chart_wrap"><div id="chart" style="max-width:90%"></div></div>
-
-    <button class="btn btn-large btn-primary" id="average">Find Average</button>
+  <div class="row">
+    <div class="col col-sm-12 mx-4">
+      <div id="chart_wrap"><div id="chart" style="max-width:90%"></div></div>
+    </div>
+  </div>
+  <div class="row ml-5 pl-5">
+    <div class="col col-lg-6 col-sm-4 mx-4">
+      <button class="btn btn-large btn-primary" id="average">Find Average</button>
+    </div>
   </div>
 </div>
