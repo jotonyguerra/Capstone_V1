@@ -45,21 +45,23 @@ $(document).ready(function () {
              rObj = [obj.glucose_value];
              return rObj;
            })
+
+           function averageGlucose() {
+             var sum = 0;
+             for (var i=0; i < glucoseValue.length; i++) {
+               sum += Number(glucoseValue[i]);
+             }
+             var avg = sum / glucoseValue.length;
+
+             console.log(avg);
+             return avg;
+           }
           //  function to grab averages glucose for all values
           // need to add function for specific date range!
           // change jquery selector
-          $("#ImageHosting").click(function () {
-            alert("test");
+          $('#average').click(function(event) {
+            alert('Average glucose is ' + averageGlucose() + ' mg/dl!');
 
-            function averageGlusoce() {
-              var sum = 0;
-              for (var i=0; i < glucoseValue.length; i++) {
-                sum += Number(glucoseValue[i]);
-              }
-              let avg = sum / glucoseValue.length;
-
-              console.log(avg);
-            }
           });
 
 
